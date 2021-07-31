@@ -41,7 +41,7 @@ class cpnFilm extends HTMLElement {
               <div class="badge badge-secondary p-1 mr-2">${this.props.age}+</div>
               <span class="text-white">${this.props.time}</span>
             </div>
-            <div class="hover-buttons">
+            <div class="hover-buttons btnPlay">
               <span class="btn btn-hover"
                 ><i class="fa fa-play mr-1" aria-hidden="true"></i>
                 Play Now
@@ -87,6 +87,13 @@ class cpnFilm extends HTMLElement {
     `;
     this.shadow.innerHTML += inner;
     var shadowChild = this.shadow.getElementById(`${this.props.id}`);
+    let playButton = this.shadow.querySelector(`.btnPlay`);
+
+    playButton.onclick = () => {
+      let dirURL = "movie-watch.html" + `?fn=${arg}`;
+      // window.location.replace(dirURL);
+      window.location.href = dirURL;
+    
     // console.log(shadowChild);
     // ---------------------- Add follow film ----------------------------
     let IDfilm = "";

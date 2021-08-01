@@ -11,7 +11,7 @@ class basic2 extends HTMLElement {
       name: "",
       age: "",
       time: "",
-      like: "",
+      view: "",
       id: "",
     };
   }
@@ -41,6 +41,8 @@ class basic2 extends HTMLElement {
                         >${this.props.time} min</span
                       >
                     </div>
+                    <div>Views: <span>${this.props.view}</span></div>
+                    <br>
                   </div>
                   <div class="Btn row m-0">
                     <span class="btnPlay btn-hover p-1"
@@ -64,6 +66,12 @@ class basic2 extends HTMLElement {
     playButton.onclick = () => {
       let dirURL = "movie-watch.html" + `?fn=${arg}`;
       // window.location.replace(dirURL);
+
+      const film = firebase.firestore().collection("films").doc(shadowChild.id);
+      film.update({
+        view: firebase.firestore.FieldValue.increment(1),
+      });
+
       window.location.href = dirURL;
     };
 
@@ -143,7 +151,7 @@ class basic2 extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["avatar", "href", "name", "age", "time", "like", "id"];
+    return ["avatar", "href", "name", "age", "time", "view", "id"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

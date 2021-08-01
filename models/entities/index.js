@@ -4,6 +4,7 @@ import * as filmData from "./filmData.js";
 const addFilmBtn = document.getElementById("addFilmBtn");
 const tagRow = document.getElementById("tag-film");
 const rowContent = document.getElementById("rowContent");
+const rowContent1 = document.getElementById("rowContent1");
 
 /**
  * Create Film
@@ -53,7 +54,7 @@ async function addFilms(film) {
  * ReadFilm
  * @param {*} film
  */
-async function getFilms() {
+async function getNewFilms() {
   try {
     const data = await firebase
       .firestore()
@@ -73,7 +74,7 @@ async function getFilms() {
         name = "${doc.data().filmName}"
         age = "${doc.data().age}"
         time = "${doc.data().time}"
-        like = "${doc.data().vote}"
+        view = "${doc.data().view}"
         id = "${doc.id}"
       ></basic-para>`
       );
@@ -84,4 +85,40 @@ async function getFilms() {
     console.log(error);
   }
 }
-getFilms();
+getNewFilms();
+/**
+ * ReadFilm
+ * @param {*} film
+ */
+async function getMostFilms() {
+  try {
+    const data = await firebase
+      .firestore()
+      .collection("films")
+      .orderBy("view", "desc")
+      .limit(4)
+      .get();
+    // rowContent.style.width = "unset";
+    // rowContent.style.display = "flex";
+    data.docs.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data().filmName);
+      rowContent1.insertAdjacentHTML(
+        "beforeend",
+        `<basic-para class="col-sm-3" style="padding: 0 0 40px 0"
+        avatar = "${doc.data().banner}"
+        href = "${doc.data().href}"
+        name = "${doc.data().filmName}"
+        age = "${doc.data().age}"
+        time = "${doc.data().time}"
+        view = "${doc.data().view}"
+        id = "${doc.id}"
+      ></basic-para>`
+      );
+      let a = document.getElementById(`${doc.id}`);
+      a.id = "";
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+getMostFilms();

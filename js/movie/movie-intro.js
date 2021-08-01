@@ -30,11 +30,6 @@ function getArg(params) {
   return ID;
 }
 
-playBtn.onclick = () => {
-  let dirURL = "movie-watch.html" + `?fn=${arg}`;
-  // window.location.replace(dirURL);
-  window.location.href = dirURL;
-};
 console.log(filmName);
 async function getFilms() {
   try {
@@ -91,6 +86,21 @@ async function getFilms() {
         `
       );
     }
+    playBtn.onclick = () => {
+      let dirURL = "movie-watch.html" + `?fn=${arg}`;
+      // window.location.replace(dirURL);
+
+      const film = firebase
+        .firestore()
+        .collection("films")
+        .doc(data.docs[0].id);
+      film.update({
+        view: firebase.firestore.FieldValue.increment(1),
+      });
+
+      // console.log("tang 1");
+      window.location.href = dirURL;
+    };
   } catch (error) {
     console.log(error);
   }

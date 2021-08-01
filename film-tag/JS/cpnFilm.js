@@ -11,7 +11,7 @@ class cpnFilm extends HTMLElement {
       name: "",
       age: "",
       time: "",
-      like: "",
+      view: "",
       id: "",
     };
   }
@@ -74,8 +74,8 @@ class cpnFilm extends HTMLElement {
                 </div>
               </li>
               <li>
-                <span><i class="ri-heart-fill"></i></span>
-                <span class="count-box">${this.props.like}</span>
+                <span><i class="fas fa-eye"></i></span>
+                <span class="count-box">${this.props.view}</span>
               </li>
               <li>
                 <span><i class="ri-add-line" id="${this.props.id}"></i></span>
@@ -92,6 +92,11 @@ class cpnFilm extends HTMLElement {
     playButton.onclick = () => {
       let dirURL = "movie-watch.html" + `?fn=${arg}`;
       // window.location.replace(dirURL);
+      const film = firebase.firestore().collection("films").doc(shadowChild.id);
+      film.update({
+        view: firebase.firestore.FieldValue.increment(1),
+      });
+
       window.location.href = dirURL;
 
       // console.log(shadowChild);
@@ -167,7 +172,7 @@ class cpnFilm extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["avatar", "href", "name", "age", "time", "like", "id"];
+    return ["avatar", "href", "name", "age", "time", "view", "id"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

@@ -27,7 +27,7 @@ async function genresFilm() {
           name = "${doc.data().filmName}"
           age = "${doc.data().age}"
           time = "${doc.data().time}"
-          like = "${doc.data().vote}"
+          view = "${doc.data().view}"
           id = "${doc.id}"
         ></basic-param>`
         );

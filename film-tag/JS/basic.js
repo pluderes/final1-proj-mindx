@@ -11,7 +11,7 @@ class basic extends HTMLElement {
       name: "",
       age: "",
       time: "",
-      like: "",
+      view: "",
       id: "",
     };
   }
@@ -50,13 +50,13 @@ class basic extends HTMLElement {
                       <span><i class="ri-share-fill"></i></span>
                       <div class="share-box">
                           <div class="d-flex align-items-center">
-                            <a href="https://www.facebook.com/sharer?u${this.props.href}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/sharer?u=${this.props.href}"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/intent/tweet?text=Currentlyreading" target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i class="ri-twitter-fill"></i></a>
                       </div>
                     </li>
                     <li>
-                        <span><i class="ri-heart-fill"></i></span>
-                        <span class="count-box">${this.props.like}</span>
+                        <span><i class="fas fa-eye"></i></span>
+                        <span class="count-box">${this.props.view}</span>
                     </li>
                   <li><span><i class="ri-add-line" id="${this.props.id}"></i></span></li>
                 </ul>
@@ -72,6 +72,12 @@ class basic extends HTMLElement {
     playButton.onclick = () => {
       let dirURL = "movie-watch.html" + `?fn=${arg}`;
       // window.location.replace(dirURL);
+
+      const film = firebase.firestore().collection("films").doc(shadowChild.id);
+      film.update({
+        view: firebase.firestore.FieldValue.increment(1),
+      });
+
       window.location.href = dirURL;
     };
     // console.log(shadowChild);
@@ -145,7 +151,7 @@ class basic extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["avatar", "href", "name", "age", "time", "like", "id"];
+    return ["avatar", "href", "name", "age", "time", "view", "id"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

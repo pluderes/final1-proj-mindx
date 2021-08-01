@@ -34,7 +34,7 @@ class basic extends HTMLElement {
                 </h6>
                 <div class="movie-time d-flex align-items-center my-2">
                   <div class="badge badge-secondary p-1 mr-2">${this.props.age}+</div>
-                  <span class="text-white">${this.props.time}</span>
+                  <span class="text-white">${this.props.time} min</span>
                 </div>
                 <div class="hover-buttons btnPlay">
                   <span class="btn btn-hover iq-button">
@@ -59,7 +59,6 @@ class basic extends HTMLElement {
                         <span class="count-box">${this.props.like}</span>
                     </li>
                   <li><span><i class="ri-add-line" id="${this.props.id}"></i></span></li>
-  
                 </ul>
             </div>
           </div>

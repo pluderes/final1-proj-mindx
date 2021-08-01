@@ -48,7 +48,7 @@ class basic2 extends HTMLElement {
                       Now</span
                     >
                     <span class="btnUnfollow btn-hover p-1"
-                      ><i class="fa fa-close mr-1" aria-hidden="true"></i>
+                      ><i id="${this.props.id}" class="fa fa-close mr-1" aria-hidden="true"></i>
                       UnFollow</span
                     >
                   </div>
@@ -59,6 +59,7 @@ class basic2 extends HTMLElement {
 
     let playButton = this.shadow.querySelector(`.btnPlay`);
     let unFollowButton = this.shadow.querySelector(`.btnUnfollow`);
+    let shadowChild = this.shadow.getElementById(`${this.props.id}`);
 
     playButton.onclick = () => {
       let dirURL = "movie-watch.html" + `?fn=${arg}`;
@@ -66,8 +67,78 @@ class basic2 extends HTMLElement {
       window.location.href = dirURL;
     };
 
-    unFollowButton.onclick = () => {
+    // ------------------ unfollow film --------------------------
+    let IDfilm = "";
+    async function listFilms() {
+      try {
+        unFollowButton.onclick = () => {
+          console.log("object");
+          if (emailLogin == null) {
+            Swal.fire({
+              icon: "warning",
+              title: "Please log in to use this feature!",
+            });
+          } else {
+            IDfilm = shadowChild.id;
+            // console.log(IDfilm);
+            unFollowedFilms();
+          }
+        };
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    listFilms();
+    async function unFollowedFilms() {
+      try {
+        let id = await firebase
+          .firestore()
+          .collection("users")
+          .where("email", "==", emailLogin)
+          .get();
 
+        if (id.docs[0].data().listFollowedFilm.includes(IDfilm)) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              async function removeFilm() {
+                await firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(id.docs[0].id)
+                  .update({
+                    listFollowedFilm:
+                      firebase.firestore.FieldValue.arrayRemove(IDfilm),
+                  });
+              }
+              removeFilm();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Deleted.",
+                icon: "success",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  location.reload();
+                }
+              });
+            }
+          });
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "Not in the list!",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 

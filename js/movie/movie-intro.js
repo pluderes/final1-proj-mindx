@@ -74,6 +74,7 @@ async function getFilms() {
 
     // console.log(filmData.actors.length);
     for (let i = 0; i < filmData.actors.length; i++) {
+      let actorNameWiki = filmData.actors[i].actorName.replace(" ", "_");
       ulActor.insertAdjacentHTML(
         "beforeend",
         `
@@ -82,7 +83,9 @@ async function getFilms() {
             <img src="${
               filmData?.actors[i].actorImg || "./images/user/user.jpg"
             }" alt="actor" />
-            <a href="#"><p>${filmData.actors[i].actorName || "None"}</p></a>
+            <a href="https://vi.wikipedia.org/wiki/${actorNameWiki}"><p>${
+          filmData.actors[i].actorName || "None"
+        }</p></a>
           </span>
          </li>
         `

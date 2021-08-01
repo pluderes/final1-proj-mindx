@@ -72,7 +72,7 @@ async function getFilms() {
         href = "${doc.data().href}"
         name = "${doc.data().filmName}"
         age = "${doc.data().age}"
-        time = "${doc.data().time} m"
+        time = "${doc.data().time}"
         like = "${doc.data().vote}"
         id = "${doc.id}"
       ></basic-para>`

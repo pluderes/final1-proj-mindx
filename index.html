@@ -80,32 +80,32 @@
                         <a id="action" href="#">Action</a>
                       </li>
                       <li class="menu-item">
-                        <a id="anime" href="#">Anime</a>
+                        <a id="anime" href="#">Animation</a>
                       </li>
                       <li class="menu-item">
-                        <a href="#">Film Genres</a>
+                        <a href="#">More Genres</a>
                         <ul class="sub-menu menu-item-expand">
                           <div class="menu-expand-inner">
                             <ul>
                               <li class="menu-item">
-                                <a href="./movie-category.html">Comedy</a>
+                                <a id="comedy" href="#">Comedy</a>
                               </li>
                               <li class="menu-item">
-                                <a href="./dramaFilm.html">Drama</a>
+                                <a id="drama" href="#">Drama</a>
                               </li>
                               <li class="menu-item">
-                                <a href="./fantasyFilm.html">Fantasy</a>
+                                <a id="fantasy" href="#">Fantasy</a>
                               </li>
                             </ul>
                             <ul>
                               <li class="menu-item">
-                                <a href="./mysteryFilm.html">Mystery</a>
+                                <a id="mystery" href="#">Mystery</a>
                               </li>
                               <li class="menu-item">
-                                <a href="./romanceFilm.html">Romance</a>
+                                <a id="romance" href="#">Romance</a>
                               </li>
                               <li class="menu-item">
-                                <a href="./thrillerFilm.html">Thriller</a>
+                                <a id="thriller" href="#">Thriller</a>
                               </li>
                             </ul>
                           </div>
@@ -181,7 +181,7 @@
                             "
                           >
                             <img
-                            id="AvatarMB"
+                              id="AvatarMB"
                               src="images/user/user.jpg"
                               class="img-fluid avatar-40 rounded-circle"
                               alt="user"
@@ -269,7 +269,7 @@
                         data-toggle="search-toggle"
                       >
                         <img
-                        id="AvatarWEB"
+                          id="AvatarWEB"
                           src="images/user/user.jpg"
                           class="img-fluid avatar-40 rounded-circle"
                           alt="user"
@@ -848,98 +848,8 @@
         </div>
       </section>
       <section id="parallex" class="parallax-window">
-        <div class="container-fluid h-100">
-          <div
-            class="
-              row
-              align-items-center
-              justify-content-center
-              h-100
-              parallaxt-details
-            "
-          >
-            <div class="col-lg-4 r-mb-23">
-              <div class="text-left">
-                <a href="javascript:void(0);">
-                  <img
-                    src="images/parallax/parallax-logo.png"
-                    class="img-fluid"
-                    alt="bailey"
-                  />
-                </a>
-                <div
-                  class="parallax-ratting d-flex align-items-center mt-3 mb-3"
-                >
-                  <ul
-                    class="
-                      ratting-start
-                      p-0
-                      m-0
-                      list-inline
-                      text-primary
-                      d-flex
-                      align-items-center
-                      justify-content-left
-                    "
-                  >
-                    <li>
-                      <a href="javascript:void(0);" class="text-primary"
-                        ><i class="fa fa-star" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0);" class="pl-2 text-primary"
-                        ><i class="fa fa-star" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0);" class="pl-2 text-primary"
-                        ><i class="fa fa-star" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0);" class="pl-2 text-primary"
-                        ><i class="fa fa-star" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0);" class="pl-2 text-primary"
-                        ><i class="fa fa-star-half-o" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <span class="text-white ml-3">9.2 (lmdb)</span>
-                </div>
-                <div class="movie-time d-flex align-items-center mb-3">
-                  <div class="badge badge-secondary mr-3">13+</div>
-                  <h6 class="text-white">2h 30m</h6>
-                </div>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry...
-                </p>
-                <div class="parallax-buttons">
-                  <a href="movie-details.html" class="btn btn-hover"
-                    >Play Now</a
-                  >
-                  <a href="movie-details.html" class="btn btn-link"
-                    >More details</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-8">
-              <div class="parallax-img">
-                <a href="movie-details.html">
-                  <img
-                    src="images/parallax/p1.jpg"
-                    class="img-fluid w-100"
-                    alt="bailey"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+        <div id="divRandFilm" class="container-fluid h-100">
+          
         </div>
       </section>
     </div>
@@ -1099,6 +1009,7 @@
     <script src="./js/slick-animation.min.js"></script>
     <!-- Custom JS-->
     <script src="./js/custom.js"></script>
+    <script src="./js/SignUp-Login/random-movie.js" type="module"></script>
     <script src="./js/SignUp-Login/signout.js"></script>
     <script src="./js/SignUp-Login/avatar.js" type="module"></script>
     <script src="./js/SignUp-Login/search.js"></script>

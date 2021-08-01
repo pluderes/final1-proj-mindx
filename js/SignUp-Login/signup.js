@@ -11,6 +11,11 @@ const rePassword = document.getElementById("rePassword");
 const btnSignup = document.getElementById("btnSignup");
 const btnLogin = document.getElementById("btnLogin");
 
+const REGEX_PHONE =
+  /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+const REGEX_EMAIL =
+  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
 window.onload = () => {
   console.log(firebase.app().name);
 };
@@ -51,7 +56,7 @@ async function createAccount() {
     if (response.docs.length > 0) {
       swal(
         {
-          title: `Email đã tồn tại! Về trang đăng nhập?`,
+          title: `Registered email! Back to login?`,
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#f8c086",
@@ -74,7 +79,7 @@ async function createAccount() {
       rePassword.value.trim() == ""
     ) {
       swal({
-        title: "Chưa nhập đủ thông tin!",
+        title: "Please fill in all required form fields!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#DD6B55",
@@ -84,7 +89,7 @@ async function createAccount() {
       });
     } else if (password.value.trim() != rePassword.value.trim()) {
       swal({
-        title: "Nhập lại mật khẩu không chính xác!",
+        title: "Re-password incorrect!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#DD6B55",
@@ -92,8 +97,32 @@ async function createAccount() {
         closeOnConfirm: false,
         closeOnCancel: false,
       });
-      return;
-    } else {
+    } else if (phone.value.trim() != "" && !phone.value.match(REGEX_PHONE)) {
+      swal({
+        title: "Invalid phone number!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false,
+        closeOnCancel: false,
+      });
+    } else if (email.value.trim() != "" && !email.value.match(REGEX_EMAIL)) {
+      swal({
+        title: "Invalid email!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false,
+        closeOnCancel: false,
+      });
+    } else if (
+      phone.value.trim() != "" &&
+      phone.value.match(REGEX_PHONE) &&
+      email.value.trim() != "" &&
+      email.value.match(REGEX_EMAIL)
+    ) {
       const userDone = await firebase
         .firestore()
         .collection("users")
@@ -128,6 +157,16 @@ async function createAccount() {
             }
           );
         });
+    } else {
+      swal({
+        title: `Something went wrong!`,
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#f8c086",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false,
+        closeOnCancel: false,
+      });
     }
   } catch (error) {
     swal({

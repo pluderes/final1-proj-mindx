@@ -233,7 +233,7 @@ async function getListFilms() {
         .where("email", "==", emailLogin)
         .get();
       let listIDFilm = id.docs[0].data().listFollowedFilm;
-      // console.log(listIDFilm);
+      console.log(id.docs[0].data());
       const films = await firebase.firestore().collection("films").get();
       for (let i = 0; i < listIDFilm.length; i++) {
         films.docs.forEach((doc) => {

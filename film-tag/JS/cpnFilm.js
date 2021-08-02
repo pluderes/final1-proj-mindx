@@ -100,75 +100,74 @@ class cpnFilm extends HTMLElement {
       window.location.href = dirURL;
 
       // console.log(shadowChild);
-      // ---------------------- Add follow film ----------------------------
-      let IDfilm = "";
-      async function listFilms() {
-        try {
-          shadowChild.onclick = () => {
-            if (emailLogin == null) {
-              Swal.fire({
-                title: `Please log in to use this feature!`,
-                type: "warning",
-                showCancelButton: false,
-                confirmButtonColor: "#f8c086",
-                confirmButtonText: "Ok",
-                closeOnConfirm: false,
-                closeOnCancel: false,
-              });
-              Swal.fire("Please log in to use this feature!", "warning");
-            } else {
-              IDfilm = shadowChild.id;
-              console.log(IDfilm);
-              addFollowedFilms();
-            }
-          };
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      listFilms();
-      async function addFollowedFilms() {
-        try {
-          let id = await firebase
-            .firestore()
-            .collection("users")
-            .where("email", "==", emailLogin)
-            .get();
-
-          if (id.docs[0].data().listFollowedFilm.includes(IDfilm)) {
+    };
+    // ---------------------- Add follow film ----------------------------
+    let IDfilm = "";
+    async function listFilms() {
+      try {
+        shadowChild.onclick = () => {
+          if (emailLogin == null) {
             swal({
-              title: "Already on the list!",
+              title: `Please log in to use this feature!`,
               type: "warning",
               showCancelButton: false,
-              confirmButtonColor: "#40f756",
+              confirmButtonColor: "#f8c086",
               confirmButtonText: "Ok",
               closeOnConfirm: false,
               closeOnCancel: false,
             });
           } else {
-            const user = await firebase
-              .firestore()
-              .collection("users")
-              .doc(id.docs[0].id)
-              .update({
-                listFollowedFilm:
-                  firebase.firestore.FieldValue.arrayUnion(IDfilm),
-              });
-            swal({
-              title: "Added success!",
-              type: "success",
-              showCancelButton: false,
-              confirmButtonColor: "#40f756",
-              confirmButtonText: "Ok",
-              closeOnConfirm: false,
-              closeOnCancel: false,
-            });
+            IDfilm = shadowChild.id;
+            console.log(IDfilm);
+            addFollowedFilms();
           }
-        } catch (error) {
-          console.log(error);
-        }
+        };
+      } catch (error) {
+        console.log(error);
       }
-    };
+    }
+    listFilms();
+    async function addFollowedFilms() {
+      try {
+        let id = await firebase
+          .firestore()
+          .collection("users")
+          .where("email", "==", emailLogin)
+          .get();
+
+        if (id.docs[0].data().listFollowedFilm.includes(IDfilm)) {
+          swal({
+            title: "Already on the list!",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#40f756",
+            confirmButtonText: "Ok",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          });
+        } else {
+          const user = await firebase
+            .firestore()
+            .collection("users")
+            .doc(id.docs[0].id)
+            .update({
+              listFollowedFilm:
+                firebase.firestore.FieldValue.arrayUnion(IDfilm),
+            });
+          swal({
+            title: "Added success!",
+            type: "success",
+            showCancelButton: false,
+            confirmButtonColor: "#40f756",
+            confirmButtonText: "Ok",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   static get observedAttributes() {

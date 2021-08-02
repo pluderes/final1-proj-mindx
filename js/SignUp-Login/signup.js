@@ -132,6 +132,7 @@ async function createAccount() {
           email: email.value,
           avatar: "./images/user/user.jpg",
           passWord: MD5(password.value),
+          listFollowedFilm: [],
         });
       firebase
         .auth()

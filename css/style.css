@@ -436,13 +436,13 @@ header .navbar ul li:last-child {
   z-index: 1;
 }
 #home-slider .slick-bg.s-bg-1 {
-  background-image: url(../images/slider/slider1.jpg);
+  background-image: url(https://images4.alphacoders.com/110/thumb-1920-1107135.jpg);
 }
 #home-slider .slick-bg.s-bg-2 {
-  background-image: url(../images/slider/slider2.jpg);
+  background-image: url(https://images6.alphacoders.com/114/thumb-1920-1148028.jpg);
 }
 #home-slider .slick-bg.s-bg-3 {
-  background-image: url(../images/slider/slider3.jpg);
+  background-image: url(https://images5.alphacoders.com/112/1124652.jpg);
 }
 .trailor-video {
   position: absolute;

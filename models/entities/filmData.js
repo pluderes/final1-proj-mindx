@@ -334,3 +334,73 @@ export const film15 = new Films(
   "90",
   []
 );
+
+// ----------------------------- trailer -----------------------------------
+export const film16 = new Films(
+  "The King's Man",
+  "https://m.media-amazon.com/images/M/MV5BZGE2MmQ0ZTEtM2FjOC00OTE1LTlmYjMtYjlkMzllN2RlOTBiXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+  "https://images5.alphacoders.com/103/thumb-1920-1038031.png",
+  2021,
+  "In the early years of the 20th century, the Kingsman agency is formed to stand against a cabal plotting a war to wipe out millions.",
+  "coming soon",
+  ["Action", "Adventure", "Comedy"],
+  "USA",
+  [{ directorName: "Matthew Vaughn", gender: "Male" }],
+  [
+    { actorName: "Gemma Arterton", gender: "Female" },
+    { actorName: "Harris Dickinson", gender: "Male" },
+    { actorName: "Ralph Fiennes", gender: "Male" },
+  ],
+  1,
+  10,
+  18,
+  "https://mega.nz/file/NpNj3QrK#TL_VigndgViSXhOE8MoefqXvnC-vvMBDkG2vZWX1PE4",
+  "Unknow",
+  []
+);
+
+export const film17 = new Films(
+  "Marvel Studios’ ShangChi and the Legend of the Ten Rings",
+  "https://genk.mediacdn.vn/139269124445442048/2021/4/20/ezvqwiavoaiav-e-1618905021452596361326.jpg",
+  "https://images7.alphacoders.com/103/1037280.png",
+  2021,
+  "In the early years of the 20th century, the Kingsman agency is formed to stand against a cabal plotting a war to wipe out millions.",
+  "coming soon",
+  ["Action", "Adventure", "Fantasy"],
+  "USA",
+  [{ directorName: "Destin Daniel Cretton", gender: "Male" }],
+  [
+    { actorName: "Simu Liu", gender: "Male" },
+    { actorName: "Awkwafina", gender: "Female" },
+    { actorName: "Tony Chiu-Wai Leung", gender: "Male" },
+  ],
+  1,
+  10,
+  18,
+  "https://mega.nz/file/QpsEnaRK#shzHcmgU5I7pnTBCyVndxnQgw7V_uBuinh5Kkc6cwMo",
+  "Unknow",
+  []
+);
+
+export const film18 = new Films(
+  "TOP GUN 2",
+  "https://m.media-amazon.com/images/M/MV5BZGE2MmQ0ZTEtM2FjOC00OTE1LTlmYjMtYjlkMzllN2RlOTBiXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg",
+  "https://images5.alphacoders.com/103/thumb-1920-1038031.png",
+  2021,
+  "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
+  "coming soon",
+  ["Action", "Drama"],
+  "USA",
+  [{ directorName: "Joseph Kosinski", gender: "Male" }],
+  [
+    { actorName: "Tom Cruise", gender: "Male" },
+    { actorName: "Jennifer Connelly", gender: "Female" },
+    { actorName: "Miles Teller", gender: "Male" },
+  ],
+  1,
+  10,
+  18,
+  "https://mega.nz/file/Fsk2nY4Y#aiu3ioetT2L3Qvct9SdB7ONvpwFfgKNFByDXZI5XMPI",
+  "Unknow",
+  []
+);

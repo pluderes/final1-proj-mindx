@@ -1,13 +1,17 @@
 let sectionRand = document.getElementById("parallex");
 let divRand = document.getElementById("divRandFilm");
 
-const randFilm = await firebase.firestore().collection("films").get();
+const randFilm = await firebase
+  .firestore()
+  .collection("films")
+  .where("filmStatus", "==", "active")
+  .get();
 
 const randID = Math.floor(Math.random() * randFilm.size);
 
-console.log(randFilm.docs[randID].data());
+// console.log(randFilm.docs[randID].data());
 
-console.log(divRand);
+// console.log(divRand);
 try {
   sectionRand.setAttribute(
     "style",

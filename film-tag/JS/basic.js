@@ -98,7 +98,7 @@ class basic extends HTMLElement {
             });
           } else {
             IDfilm = shadowChild.id;
-            console.log(IDfilm);
+            // console.log(IDfilm);
             addFollowedFilms();
           }
         };

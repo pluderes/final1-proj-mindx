@@ -1,6 +1,6 @@
 const link = (str) => {
   str = str.replace(/\s/g, "-");
-  console.log(str);
+  // console.log(str);
   return str;
 };
 

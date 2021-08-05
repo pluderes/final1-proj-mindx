@@ -10,7 +10,11 @@ let divResult = document.getElementById("rowContent");
 
 async function genresFilm() {
   try {
-    const searchResult = await firebase.firestore().collection("films").get();
+    const searchResult = await firebase
+      .firestore()
+      .collection("films")
+      .orderBy("createdAt", "desc")
+      .get();
     searchResult.docs.forEach((doc) => {
       // console.log(doc.id, ` : `, listIDFilm[i]);
       if (
@@ -19,18 +23,33 @@ async function genresFilm() {
           .genre.map((e) => e.toLowerCase())
           .includes(genres.toLocaleLowerCase())
       ) {
-        divResult.insertAdjacentHTML(
-          "beforeend",
-          `<basic-param style="width: 335px";"
-          avatar = "${doc.data().banner}"
-          href = "${doc.data().href}"
-          name = "${doc.data().filmName}"
-          age = "${doc.data().age}"
-          time = "${doc.data().time}"
-          view = "${doc.data().view}"
-          id = "${doc.id}"
-        ></basic-param>`
-        );
+        if (doc.data().filmStatus === "coming soon") {
+          divResult.insertAdjacentHTML(
+            "beforeend",
+            `<basic-param style="width: 335px";"
+            avatar = "${doc.data().banner}"
+            href = "${doc.data().href}"
+            name = "${doc.data().filmName}"
+            age = "${doc.data().age}"
+            time = "COMING SOON"
+            view = "${doc.data().view}"
+            id = "${doc.id}"
+          ></basic-param>`
+          );
+        } else {
+          divResult.insertAdjacentHTML(
+            "beforeend",
+            `<basic-param style="width: 335px";"
+            avatar = "${doc.data().banner}"
+            href = "${doc.data().href}"
+            name = "${doc.data().filmName}"
+            age = "${doc.data().age}"
+            time = "${doc.data().time} min"
+            view = "${doc.data().view}"
+            id = "${doc.id}"
+          ></basic-param>`
+          );
+        }
         let a = document.getElementById(`${doc.id}`);
         a.id = "";
       }

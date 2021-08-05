@@ -5,7 +5,7 @@ async function allFilm() {
     const searchResult = await firebase
       .firestore()
       .collection("films")
-      .orderBy("createdAt", "desc")
+      .orderBy("view", "desc")
       .get();
     searchResult.docs.forEach((doc) => {
       // console.log(doc.id, ` : `, listIDFilm[i]);

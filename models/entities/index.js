@@ -65,19 +65,34 @@ async function getNewFilms() {
     // rowContent.style.width = "unset";
     // rowContent.style.display = "flex";
     data.docs.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data().filmName);
-      rowContent.insertAdjacentHTML(
-        "beforeend",
-        `<basic-para class="col-sm-3" style="padding: 0 0 40px 0"
-        avatar = "${doc.data().banner}"
-        href = "${doc.data().href}"
-        name = "${doc.data().filmName}"
-        age = "${doc.data().age}"
-        time = "${doc.data().time}"
-        view = "${doc.data().view}"
-        id = "${doc.id}"
-      ></basic-para>`
-      );
+      if (doc.data().filmStatus === "coming soon") {
+        rowContent.insertAdjacentHTML(
+          "beforeend",
+          `<basic-para class="col-sm-3" style="padding: 0 0 40px 0"
+          avatar = "${doc.data().banner}"
+          href = "${doc.data().href}"
+          name = "${doc.data().filmName}"
+          age = "${doc.data().age}"
+          time = "COMING SOON"
+          view = "${doc.data().view}"
+          id = "${doc.id}"
+        ></basic-para>`
+        );
+      } else {
+        rowContent.insertAdjacentHTML(
+          "beforeend",
+          `<basic-para class="col-sm-3" style="padding: 0 0 40px 0"
+          avatar = "${doc.data().banner}"
+          href = "${doc.data().href}"
+          name = "${doc.data().filmName}"
+          age = "${doc.data().age}"
+          time = "${doc.data().time} min"
+          view = "${doc.data().view}"
+          id = "${doc.id}"
+        ></basic-para>`
+        );
+      }
+
       let a = document.getElementById(`${doc.id}`);
       a.id = "";
     });
@@ -109,7 +124,7 @@ async function getMostFilms() {
         href = "${doc.data().href}"
         name = "${doc.data().filmName}"
         age = "${doc.data().age}"
-        time = "${doc.data().time}"
+        time = "${doc.data().time} min"
         view = "${doc.data().view}"
         id = "${doc.id}"
       ></basic-para>`

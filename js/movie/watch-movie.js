@@ -36,12 +36,12 @@ async function getFilms() {
     let filmData = data.docs[0].data();
     // console.log(filmData);
 
-    filmTitle.innerHTML = filmData?.filmName || "None";
-    filmDesc.innerHTML = filmData?.description || "None";
+    filmTitle.innerHTML = filmData?.filmName || "Unknow";
+    filmDesc.innerHTML = filmData?.description || "Unknow";
 
     filmAge.innerHTML = filmData?.age + "+" || "All age";
-    filmTime.innerHTML = filmData?.time + " min" || "No info";
-    filmYear.innerHTML = filmData?.releaseYear || "None";
+    filmTime.innerHTML = filmData?.time + " min" || "Unknow";
+    filmYear.innerHTML = filmData?.releaseYear || "Unknow";
 
     let filmEmbed = filmData.href;
     filmEmbed = filmEmbed.replace(/file/g, "embed");
@@ -88,7 +88,7 @@ async function moreFilm() {
         href = "${doc.data().href}"
         name = "${doc.data().filmName}"
         age = "${doc.data().age}"
-        time = "${doc.data().time} m"
+        time = "${doc.data().time} min"
         view = "${doc.data().view}"
         id = "${doc.id}"
       ></basic-param>

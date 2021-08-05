@@ -38,7 +38,7 @@ class basic2 extends HTMLElement {
                     <div class="desc_movie d-flex align-items-center my-2">
                       <div class="badge badge-secondary mr-2">${this.props.age}+</div>
                       <span class="text-white" style="font-weight: bold"
-                        >${this.props.time} min</span
+                        >${this.props.time}</span
                       >
                     </div>
                     <div>Views: <span>${this.props.view}</span></div>

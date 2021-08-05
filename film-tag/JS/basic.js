@@ -34,7 +34,7 @@ class basic extends HTMLElement {
                 </h6>
                 <div class="movie-time d-flex align-items-center my-2">
                   <div class="badge badge-secondary p-1 mr-2">${this.props.age}+</div>
-                  <span class="text-white">${this.props.time} min</span>
+                  <span class="text-white">${this.props.time}</span>
                 </div>
                 <div class="hover-buttons btnPlay">
                   <span class="btn btn-hover iq-button">

@@ -56,15 +56,15 @@ async function getFilms() {
 
     filmInfo.insertAdjacentHTML(
       "beforeend",
-      ` <li>Status: <span>${filmData?.filmStatus || "None"}</span></li>
+      ` <li>Status: <span>${filmData?.filmStatus || "Unknow"}</span></li>
     <li>Director: <span>${
-      filmData?.directors[0]?.directorName || "None"
+      filmData?.directors[0]?.directorName || "Unknow"
     }</span></li>
-    <li>Country: <span>${filmData?.country || "None"}</span></li>
-    <li>Release Year: <span>${filmData?.releaseYear || "None"}</span></li>
-    <li>Duration: <span>${filmData?.time || "None"} minutes</span></li>
-    <li>Genre: <span>${filmData?.genre || "None"}</span></li>
-    <li>Views: <span>${filmData?.view || "None"}</span></li>`
+    <li>Country: <span>${filmData?.country || "Unknow"}</span></li>
+    <li>Release Year: <span>${filmData?.releaseYear || "Unknow"}</span></li>
+    <li>Duration: <span>${filmData?.time || "Unknow"} minutes</span></li>
+    <li>Genre: <span>${filmData?.genre || "Unknow"}</span></li>
+    <li>Views: <span>${filmData?.view || "Unknow"}</span></li>`
     );
 
     // console.log(filmData.actors.length);
@@ -79,7 +79,7 @@ async function getFilms() {
               filmData?.actors[i].actorImg || "./images/user/user.jpg"
             }" alt="actor" />
             <a href="https://vi.wikipedia.org/wiki/${actorNameWiki}"><p>${
-          filmData.actors[i].actorName || "None"
+          filmData.actors[i].actorName || "Unknow"
         }</p></a>
           </span>
          </li>

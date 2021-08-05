@@ -238,20 +238,35 @@ async function getListFilms() {
       for (let i = 0; i < listIDFilm.length; i++) {
         films.docs.forEach((doc) => {
           if (doc.id == listIDFilm[i]) {
-            // console.log(doc.id, ` : `, listIDFilm[i]);
-            divList.insertAdjacentHTML(
-              "beforeend",
-              `<basic2-para
-            avatar = "${doc.data().banner}"
-            href = "./movie-intro.html"
-            name = "${doc.data().filmName}"
-            age = "${doc.data().age}"
-            time = "${doc.data().time}"
-            view = "${doc.data().view}"
-            id = "${doc.id}"
-          ></basic2-para>
-          `
-            );
+            if (doc.data().filmStatus === "coming soon") {
+              divList.insertAdjacentHTML(
+                "beforeend",
+                `<basic2-para
+                  avatar = "${doc.data().banner}"
+                  href = "./movie-intro.html"
+                  name = "${doc.data().filmName}"
+                  age = "${doc.data().age}"
+                  time = "COMING SOON"
+                  view = "${doc.data().view}"
+                  id = "${doc.id}"
+                ></basic2-para>
+            `
+              );
+            } else {
+              divList.insertAdjacentHTML(
+                "beforeend",
+                `<basic2-para
+                  avatar = "${doc.data().banner}"
+                  href = "./movie-intro.html"
+                  name = "${doc.data().filmName}"
+                  age = "${doc.data().age}"
+                  time = "${doc.data().time} min"
+                  view = "${doc.data().view}"
+                  id = "${doc.id}"
+                ></basic2-para>
+            `
+              );
+            }
           }
         });
         // console.log("----------------------------------------------");
